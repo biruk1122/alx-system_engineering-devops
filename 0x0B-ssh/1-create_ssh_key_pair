@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 #create a 4096 byte RSA key
-ssh-keygen -t rsa -b 4096 -f school -N "betty"
+server_key="school"
+public_key="$(server_key).pub"
+ssh-keygen -t rsa -b 4096 -f "$(server_key)" -N "betty"
