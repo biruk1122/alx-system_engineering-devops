@@ -1,16 +1,11 @@
 #!/usr/bin/env bash
+# bash: script install and configure Nginx web server:
 
-echo -e "Updating and installing Nginx.\n"
-sudo apt-get update -y -qq && \
-	 sudo apt-get install nginx -y
+sudo apt-get update -y
+sudo apt-get install -y nginx
 
-echo -e "\nSetting up some minor stuff.\n"
-sudo service nginx start
-sudo ufw allow 'Nginx HTTP'
-sudo chown -R "$USER":"$USER" /var/www/html
-sudo chmod -R 755 /var/www
-cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
-echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
+ufw allow 'Nginx HTTP'
+sudo sed -i 's/80 default_server/80/' /etc/nginx/sites-available/default
 sudo service nginx restart
 
-echo -e "\nCompleted. ✅\n"
+echo 'Hello World!' | sudo tee /var/www/html/index.html > /dev/null
