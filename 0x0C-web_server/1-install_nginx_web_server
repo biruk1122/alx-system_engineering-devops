@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+# Update package list and install Nginx
+sudo apt-get update
+sudo apt-get install -y nginx
+
+# Create a simple HTML page with "Hello World!"
+echo "<html><body><h1>Hello World!</h1></body></html>" | sudo tee /var/www/html/index.html
+
+# Replace the default Nginx configuration with a custom configuration
+sudo cat > /etc/nginx/sites-available/default <<EOF
+server {
+    listen 80;
+    server_name _;
+
+    location / {
+        root /var/www/html;
+        index index.html;
+    }
+}
+EOF
+
+# Restart Nginx
+sudo service nginx restart
