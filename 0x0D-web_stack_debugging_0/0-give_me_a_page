@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Fix Apache not serving the expected page
+
+# Start the Docker container with port mapping
+docker run -p 8080:80 -d -it holbertonschool/265-0
+
+# Connect to the running container
+docker exec -it <container_id> /bin/bash
+
+# Inside the container, create a simple HTML file
+echo "<html><body>Hello Holberton</body></html>" > /var/www/html/index.html
+
+# Exit the container
+exit
+
+# Check the container's status
+docker ps
+
+# Test the Apache server
+curl 0:8080
