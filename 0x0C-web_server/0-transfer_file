@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# Check if the number of parameters is less than 3
+if [ "$#" -lt 3 ]; then
+    echo "Usage: $0 PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+    exit 1
+fi
+
+# Assign parameters to variables
+file_path="$1"
+server_ip="$2"
+username="$3"
+ssh_key_path="$4"
+
+# Check if the file exists
+if [ ! -f "$file_path" ]; then
+    echo "Error: File not found at $file_path"
+    exit 1
+fi
+
+# Transfer the file using scp
+scp -i "$ssh_key_path" -o StrictHostKeyChecking=no "$file_path" "$username@$server_ip":~/
+
+# Check the exit status of scp
+if [ "$?" -eq 0 ]; then
+    echo "File successfully transferred to $username@$server_ip:~/"
+else
+    echo "Error: File transfer failed."
+fi
