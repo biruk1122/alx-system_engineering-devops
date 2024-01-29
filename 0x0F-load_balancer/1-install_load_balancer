@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+# This script installs and configures HAproxy on a new Ubuntu machine
+
+# Update package lists
+sudo apt update
+
+# Install HAproxy
+sudo apt install -y haproxy
+
+# Backup the original HAproxy configuration file
+sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.backup
+
+# Configure HAproxy to send traffic to web-01 and web-02 using roundrobin algorithm
+cat <<EOF | sudo tee /etc/haproxy/haproxy.cfg >/dev/null
+global
+    log /dev/log    local0
+    log /dev/log    local1 notice
+    chroot /var/lib/haproxy
+    stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
+    stats timeout 30s
+    user haproxy
+    group haproxy
+    daemon
+
+defaults
+    log     global
+    mode    http
+    option  httplog
+    option  dontlognull
+    timeout connect 5000
+    timeout client  50000
+    timeout server  50000
+    errorfile 400 /etc/haproxy/errors/400.http
+    errorfile 403 /etc/haproxy/errors/403.http
+    errorfile 408 /etc/haproxy/errors/408.http
+    errorfile 500 /etc/haproxy/errors/500.http
+    errorfile 502 /etc/haproxy/errors/502.http
+    errorfile 503 /etc/haproxy/errors/503.http
+    errorfile 504 /etc/haproxy/errors/504.http
+
+frontend http_front
+    bind *:80
+    default_backend http_back
+
+backend http_back
+    balance roundrobin
+    server web-01 [STUDENT_ID]-web-01:80 check
+    server web-02 [STUDENT_ID]-web-02:80 check
+EOF
+
+# Restart HAproxy to apply changes and enable management via init script
+sudo systemctl restart haproxy
+sudo systemctl enable haproxy
