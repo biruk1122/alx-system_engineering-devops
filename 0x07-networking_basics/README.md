@@ -9,15 +9,11 @@ The lowest level: layer 1 which is for transmission on physical layers with elec
 The highest level: layer 7 which is for application specific communication like SNMP for emails, HTTP for your web browser, etc
 Keep in mind that the OSI model is a concept, it’s not even tangible. The OSI model doesn’t perform any functions in the networking process. It is a conceptual framework so we can better understand complex interactions that are happening. Most of the functionality in the OSI model exists in all communications systems.
 
-
-
 In this project we will mainly focus on:
 
 The Transport layer and especially TCP/UDP
 On the Network layer with IP and ICMP
 The image bellow describes more concretely how you can relate to every level.
-
-
 
 Questions:
 
@@ -34,9 +30,6 @@ Randomly
 
 
 1. Types of network
-mandatory
-
-
 LAN connect local devices together, WAN connects LANs together, and WANs are operating over the Internet.
 
 Questions:
@@ -59,9 +52,6 @@ LAN
 
 
 2. MAC and IP address
-mandatory
-
-
 Questions:
 
 What is a MAC address?
@@ -77,9 +67,6 @@ Is a number that network devices use to connect to networks
 
 
 3. UDP and TCP
-mandatory
-
-
 Let’s fill the empty parts in the drawing above.
 
 Questions:
@@ -96,9 +83,6 @@ May I increase the rate at which I am sending you boxes?
 
 
 3. UDP and TCP
-mandatory
-
-
 Let’s fill the empty parts in the drawing above.
 
 Questions:
@@ -115,9 +99,6 @@ May I increase the rate at which I am sending you boxes?
 
 
 5. Is the host on the network
-mandatory
-
-
 The Internet Control Message Protocol (ICMP) is a protocol in the Internet protocol suite. It is used by network devices, to check if other network devices are available on the network. The command ping uses ICMP to make sure that a network device remains online or to troubleshoot issues on the network.
 
 Write a Bash script that pings an IP address passed as an argument.
