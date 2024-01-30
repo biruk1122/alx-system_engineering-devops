@@ -44,8 +44,8 @@ frontend http_front
 
 backend http_back
     balance roundrobin
-    server web-01 [STUDENT_ID]-web-01:80 check
-    server web-02 [STUDENT_ID]-web-02:80 check
+    server web-01 444088:80 check
+    server web-02 444088:80 check
 EOF
 
 # Restart HAproxy to apply changes and enable management via init script
