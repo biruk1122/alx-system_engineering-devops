@@ -1,53 +1,40 @@
 #!/usr/bin/env bash
-# This script installs and configures HAproxy on a new Ubuntu machine
+#Installs and configures HAproxy in a load balancer server
 
-# Update package lists
-sudo apt update
+apt-get install -y software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-1.8
+apt-get update
+apt-get install -y haproxy=1.8.\*
 
-# Install HAproxy
-sudo apt install -y haproxy
+echo "ENABLED=1" >> /etc/default/haproxy
+mv /etc/haproxy/haproxy.cfg{,.original}
+touch /etc/haproxy/haproxy.cfg
 
-# Backup the original HAproxy configuration file
-sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.backup
-
-# Configure HAproxy to send traffic to web-01 and web-02 using roundrobin algorithm
-cat <<EOF | sudo tee /etc/haproxy/haproxy.cfg >/dev/null
-global
-    log /dev/log    local0
-    log /dev/log    local1 notice
-    chroot /var/lib/haproxy
-    stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
-    stats timeout 30s
+printf %s "global
+    log 127.0.0.1 local0 notice
+    maxconn 2000
     user haproxy
     group haproxy
-    daemon
-
 defaults
     log     global
     mode    http
     option  httplog
     option  dontlognull
-    timeout connect 5000
-    timeout client  50000
-    timeout server  50000
-    errorfile 400 /etc/haproxy/errors/400.http
-    errorfile 403 /etc/haproxy/errors/403.http
-    errorfile 408 /etc/haproxy/errors/408.http
-    errorfile 500 /etc/haproxy/errors/500.http
-    errorfile 502 /etc/haproxy/errors/502.http
-    errorfile 503 /etc/haproxy/errors/503.http
-    errorfile 504 /etc/haproxy/errors/504.http
-
-frontend http_front
-    bind *:80
-    default_backend http_back
-
-backend http_back
+    retries 3
+    option redispatch
+    timeout connect  5000
+    timeout client  10000
+    timeout server  10000
+listen hbnb
+    bind 0.0.0.0:80
+    mode http
+    stats enable
+    stats uri /haproxy?stats
     balance roundrobin
-    server web-01 444088:80 check
-    server web-02 444088:80 check
-EOF
+    option httpclose
+    option forwardfor
+    server 444080-web-01 54.144.46.92:80 check
+    server 444080-web-02 52.90.22.133:80 check
+" >> /etc/haproxy/haproxy.cfg
 
-# Restart HAproxy to apply changes and enable management via init script
-sudo systemctl restart haproxy
-sudo systemctl enable haproxy
+service haproxy start
