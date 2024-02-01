@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#configuring an nginx server
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+#restart nginx 
+service nginx start
+#terminate the first nginx process
+kill "$(pgrep 'nginx' | head -1)"
