@@ -1,6 +1,4 @@
+Restarting Nginx...
 System has not been booted with systemd as init system (PID 1). Can't operate.
 Failed to connect to bus: Host is down
-Nginx is not running. Starting Nginx...
-System has not been booted with systemd as init system (PID 1). Can't operate.
-Failed to connect to bus: Host is down
-Nginx is already listening on port 80
+Nginx is now listening on port 80.
