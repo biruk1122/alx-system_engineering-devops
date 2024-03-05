@@ -1,5 +1,4 @@
 SSH
-
 SSH stands for Secure Shell, and it is a cryptographic network protocol used for secure communication over an unsecured network. SSH provides a secure way to access and manage network devices and servers remotely, as well as securely transfer files between systems. It encrypts the data during communication, making it difficult for unauthorized parties to intercept or tamper with the information being transmitted.
 
 Key features and components of SSH include:
