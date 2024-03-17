@@ -111,6 +111,3 @@ Ping the IP 5 times
 It is interesting to look at the time value, which is the time that it took for the ICMP request to go to the 8.8.8.8 IP and come back to my host. The IP 8.8.8.8 is owned by Google, and the quickest roundtrip between my computer and Google was 7.57 ms which is pretty fast, which is a sign that the network path between my computer and Google’s datacenter is in good shape. A slow ping would indicate a slow network.
 
 Next time you feel that your connection is slow, try the ping command to see what is going on!
-
-
-
