@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+
 # Transfers a file to a server
 
 if [ $# -lt 4 ]
