@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 #create a 4096 byte RSA key
 
 ssh-keygen -t rsa -b 4096 -f school -N "betty"
