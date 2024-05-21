@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 # Does the following:
 #   Create a file /var/run/myscript.pid containing the script PID.
 #   Displays "To infinity and beyond" indefinitely
