@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 # Parses Apache log files in list format.
 #   Displays the IP and HTTP status code.
 
