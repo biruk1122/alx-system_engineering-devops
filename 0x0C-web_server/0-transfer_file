@@ -1,4 +1,3 @@
-
 # Transfers a file to a server
 
 if [ $# -lt 4 ]
