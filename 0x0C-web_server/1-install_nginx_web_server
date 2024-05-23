@@ -1,4 +1,3 @@
-
 # bash: script install and configure Nginx web server:
 
 sudo apt-get update -y
