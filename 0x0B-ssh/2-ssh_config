@@ -1,3 +1,4 @@
+#!/bin/bash
 #ssh configuration
 Host web-01
 	Hostname 54.144.46.92
