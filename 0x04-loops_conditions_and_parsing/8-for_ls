@@ -1,3 +1,4 @@
+#!/bin/bash
 # Displays the contents of the current directory in list format.
 #   Only displays the part of the name after the first dash. 
 
