@@ -1,3 +1,4 @@
+#!/bin/bash
 # Manages the script manage_my_process.
 #   When passed the argument `start`:
 #     1. Starts manage_my_process
