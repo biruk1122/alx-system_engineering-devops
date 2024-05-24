@@ -1,3 +1,4 @@
+#!/bin/bash
 # Displays the contents of the file `/etc/passwd`.
 #   Only displays the username, user id, and user home directory path.
 
