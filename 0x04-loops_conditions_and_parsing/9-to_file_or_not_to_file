@@ -1,3 +1,4 @@
+#!/bin/bash
 # Displays information about the `school` file. 
 
 if [ -e "school" ]
