@@ -1,2 +1,3 @@
+#!/bin/bash
 #connect to my server
 ssh -i ~/.ssh/school ubuntu@54.144.46.92
