@@ -1,3 +1,4 @@
+#!/bin/bash
 # Kills the 4-to_infinity_and_beyond process.
 
 pkill -f 4-to_infinity_and_beyond
