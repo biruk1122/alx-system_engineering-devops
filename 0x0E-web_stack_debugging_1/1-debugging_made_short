@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 #configure nginx server
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 service nginx start
