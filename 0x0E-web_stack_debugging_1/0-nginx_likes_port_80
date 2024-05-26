@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # This script ensures Nginx is listening on port 80
 
 # remove the default nginx configuration
