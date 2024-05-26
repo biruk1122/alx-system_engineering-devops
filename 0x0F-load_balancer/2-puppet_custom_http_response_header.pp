@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Installs a Nginx server with custom HTTP header
 
 exec {'update':
