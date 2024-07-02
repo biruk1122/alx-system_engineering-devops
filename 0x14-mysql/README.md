@@ -48,7 +48,6 @@ What if the data center where both your primary and replica database servers are
 Write a Bash script that generates a MySQL dump and creates a compressed archive out of it.
 
 Requirements:
-
 The MySQL dump must contain all your MySQL databases
 The MySQL dump must be named backup.sql
 The MySQL dump file has to be compressed to a tar.gz archive
