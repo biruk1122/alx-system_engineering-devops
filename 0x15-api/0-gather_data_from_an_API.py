@@ -2,7 +2,6 @@
 '''
 gather employee data from API
 '''
-
 import re
 import requests
 import sys
